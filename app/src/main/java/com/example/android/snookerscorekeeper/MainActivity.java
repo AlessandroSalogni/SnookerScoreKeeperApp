@@ -114,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
             savedInstanceState.putCharSequence(String.valueOf(id), getBallBtnTextView(ball.getName()).getText());
         }
 
+        savedInstanceState.putCharSequence(String.valueOf(R.id.match_story), ((TextView) findViewById(R.id.match_story)).getText());
         savedInstanceState.putSerializable(CURRENT_PLAYER, currentPlayer);
         savedInstanceState.putSerializable(CURRENT_POT_BALL, potBall);
         savedInstanceState.putBoolean(COLOUR_SEQUENCE, colourSequence);
@@ -158,12 +159,16 @@ public class MainActivity extends AppCompatActivity {
                 redBall = Integer.parseInt(memorizeString.toString());
         }
 
+        memorizeString = savedInstanceState.getCharSequence(String.valueOf(R.id.match_story));
+        ((TextView) findViewById(R.id.match_story)).setText(memorizeString);
+
         currentPlayer = (Round) savedInstanceState.getSerializable(CURRENT_PLAYER);
         potBall = (Ball) savedInstanceState.getSerializable(CURRENT_POT_BALL);
         colourSequence = savedInstanceState.getBoolean(COLOUR_SEQUENCE);
         nextBallColourSequence = (Ball) savedInstanceState.getSerializable(NEXT_BALL_COLOUR_SEQUENCE);
 
         currentPlayerDecorator(currentPlayerColour = savedInstanceState.getInt(CURRENT_PLAYER_COLOUR));
+
     }
 
     public void wrongShot(View v) {
