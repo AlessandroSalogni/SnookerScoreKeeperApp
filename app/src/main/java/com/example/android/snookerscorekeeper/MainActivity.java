@@ -274,13 +274,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void activeColorSequence() {
-        if (redBall == 0 && !colourSequence) {
-            colourSequence = true;
-            nextBallColourSequence = Ball.YELLOW;
-        }
-    }
-
     private void addScore(int point, TextView scoreTextView, TextView scoreBallTextView) {
         int score = (getCurrentPlayer().equals(Round.PLAYER_1.getPlayer())) ? (scorePlayer1 += point) : (scorePlayer2 += point);
 
@@ -292,6 +285,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void display(int number, TextView v) {
         v.setText(String.valueOf(number));
+    }
+
+    private void activeColorSequence() {
+        if (redBall == 0 && !colourSequence) {
+            colourSequence = true;
+            nextBallColourSequence = Ball.YELLOW;
+        }
     }
 
     private boolean isFoulShot(String currentBall) {
@@ -324,6 +324,7 @@ public class MainActivity extends AppCompatActivity {
         else
             currentPlayerDecorator(currentPlayerColour = getResources().getColor(R.color.playerWrongShot));
     }
+
 
     private void playerStartStyle() {
         playerModifyStyle(getResources().getColor(R.color.white), Typeface.DEFAULT, Round.PLAYER_1.getPlayer());
